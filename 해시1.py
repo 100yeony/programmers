@@ -5,6 +5,7 @@ completion = ["eden", "kiki"]
 final = []
 
 def solution(participant, completion):
+    '''
     result = Counter(participant).most_common()
 
     result_dict = {}
@@ -20,5 +21,13 @@ def solution(participant, completion):
     for k,v in result_dict.items():
         if v != 0:
             return k
+    '''
+
+    '''
+    다른 사람 풀이 : collection 객체로 리턴해서 빼기 연산이 가능
+    '''
+    result = Counter(participant) - Counter(completion)
+    # print(result)
+    return list(result.keys())[0]
 
 solution(participant, completion)
