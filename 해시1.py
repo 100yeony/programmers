@@ -9,7 +9,6 @@ def solution(participant, completion):
 
     result_dict = {}
     for i in result:
-        # result_dict = {i[0]:i[1]}
         result_dict[i[0]]=i[1]
     # print('first', result_dict)
 
