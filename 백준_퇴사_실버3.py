@@ -1,27 +1,25 @@
-N = int(input())
-arr = list()
-for i in range(N):
-    arr.append(list(map(int,input().split())))
+import sys
 
-# idx = 0
-temp = arr[0]
-answer = temp[1]
+n = int(sys.stdin.readline())
+t, p = [0 for i in range(n+1)], [0 for i in range(n+1)]
+# print(t)
 
+for i in range(n):
+    t[i], p[i] = map(int, input().split())
 
+dp = [0 for i in range(n+1)]
 
-for idx in range(N):
-    T = temp[0]
-    P = temp[1]
-    x = arr.index(temp)+T
-    # print(x, arr[idx][0])
+print(t)
+print(p)
+print(dp)
 
-    if idx != 0 and x == idx and idx+T <= N:
-        temp = arr[idx]
-        print(x, idx, temp, temp[1])
-        # print(arr[idx][1])
-        answer += temp[1]
-    else:
-        print('?', x, idx)
-        continue
+for i in range(n):
+    if dp[i] > dp[i+1]:
+        dp[i+1] = dp[i]
+    if dp[i+t[i]] < dp[i]+p[i]:
+        dp[i+t[i]] = dp[i] + p[i]
 
-print(answer)
+print(t)
+print(p)
+print(dp)
+print('answer', dp[n])
